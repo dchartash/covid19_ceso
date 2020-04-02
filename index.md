@@ -10,4 +10,4 @@ From the Canadian Institute for Health Information, coding directions for using 
 # Map
 Provincial map of covid-19 cases sourced from <https://data.ontario.ca/dataset/confirmed-positive-cases-of-covid-19-in-ontario>
 
-<img alt="Map by postal code forward sortation area boundaries" src="./gfx/covid_prov.png" height=400 width=800></img>
+<img alt="Map by postal code forward sortation area boundaries" src="./gfx/covid_prov.svg" height=400 width=800></img>
