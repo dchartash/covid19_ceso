@@ -32,7 +32,7 @@ on_f<- on_f %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
 g<-ggplot(on_f,aes(long,lat,group=group,fill=cases)) + geom_polygon() + scale_fill_gradient2(low='white',mid='orange',high='red') + geom_path(color="black",lwd=0.05) + labs(fill = "Number of Cases") + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) + facet_wrap(~Region,scales="free")
 #facet_wrap(~GTA,scale="free",labeller=labeller(GTA=c("TRUE"="Toronto","FALSE"="Rest of Province")))
 
-#generate plot, save to png
-png("gfx/covid_prov.png",height=20,width=40,res=600,units='in')
+#generate plot, save to svg
+svg("gfx/covid_prov.svg",height=20,width=40)
 plot(g)
 dev.off()
