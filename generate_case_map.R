@@ -1,69 +1,151 @@
 #packages
 require('tidyverse')
 require('rgdal')
-#require('tmap')
-#require('rgeos')
 
 #load covid data
 covidloc<-read_csv("data/conposcovidloc.csv") 
 
-#identify coverage of public health units (based on precision of first three letters of postal code area
-#get public health unit coverage areas by postal code forwarding sortation area
-PHU_pcfa<-split(covidloc,covidloc %>% mutate(Reporting_PHU_PCFA=str_extract(pattern="[A-Z0-9]{1}",Reporting_PHU_Postal_Code)) %>% pull("Reporting_PHU_PCFA"))
-#identify which 1 character sortation areas are covered by more than one unit
-PHU_ur<-which(sapply(PHU_pcfa,function(x) length(unique(x$Reporting_PHU))) > 1) %>% names()
-#get all 2 and greater character sortation areas
-PHU_pcfa_ur<-split(covidloc,covidloc %>% mutate(Reporting_PHU_PCFA=str_extract(pattern="[A-Z0-9]{2}",Reporting_PHU_Postal_Code)) %>% pull("Reporting_PHU_PCFA"))
-PHU_ur_2char<-(PHU_pcfa_ur %>% names())[grepl(paste0(PHU_ur,collapse="|"),PHU_pcfa_ur %>% names())]
-#identify which 2 character sortation areas are covered by more than one unit
-PHU_regional<-which(sapply(PHU_pcfa_ur,function(x) length(unique(x$Reporting_PHU))) > 1) %>% names()
-#map PHU to 3 character sortation areas
-PHU_3char<-covidloc %>% mutate(Reporting_PHU_PCFA=str_extract(pattern="[A-Z0-9]{2}",Reporting_PHU_Postal_Code)) %>% filter(grepl(pattern=paste0(PHU_regional,collapse="|"),Reporting_PHU_PCFA)) %>% mutate(Reporting_PHU_PCFA=str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code)) %>% select(Reporting_PHU_PCFA,Reporting_PHU) %>% distinct()
-#map PHU to 2 character sortation areas 
-PHU_2char<-covidloc %>% mutate(Reporting_PHU_PCFA=str_extract(pattern="[A-Z0-9]{2}",Reporting_PHU_Postal_Code)) %>% filter(grepl(pattern=PHU_ur_2char %>% paste0(collapse="|"),Reporting_PHU_PCFA)) %>% select(Reporting_PHU_PCFA,Reporting_PHU) %>% distinct()
-#map PHU to 1 character sortation areas 
-PHU_1char<-covidloc %>% mutate(Reporting_PHU_PCFA=str_extract(pattern="[A-Z0-9]{1}",Reporting_PHU_Postal_Code)) %>% filter(grepl(pattern=(PHU_pcfa %>% names())[which(!(PHU_pcfa %>% names()) %in% c(PHU_regional,PHU_ur))] %>% paste0(collapse="|"),Reporting_PHU_PCFA)) %>% select(Reporting_PHU_PCFA,Reporting_PHU) %>% distinct()
-#concatenate all mapped sortation areas, make sure that the longest PCFA sequence is selected for each public health unit
-PHU_PCFA<-bind_rows(PHU_1char,PHU_2char,PHU_3char) %>% mutate(L=str_length(Reporting_PHU_PCFA)) %>% group_by(Reporting_PHU) %>% summarize(Reporting_PHU_PCFA=Reporting_PHU_PCFA[which.max(L)])
+#create postal code forwarding data
+covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(OUTCOME1=="RECOVERED",na.rm=TRUE),cases=n(),deaths=sum(OUTCOME1=="FATAL",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
+    ifelse(grepl("^K",CFSAUID),"Eastern Ontario",
+    ifelse(grepl("^L",CFSAUID),"Central Ontario",
+    ifelse(grepl("^N",CFSAUID),"Southwestern Ontario",
+    ifelse(grepl("^P",CFSAUID),"Northern Ontario","Other")))))
+)
+
 
 #load geographical data for postal code forward sortation area from <https://www150.statcan.gc.ca/n1/en/catalogue/92-179-X>
-can<-readOGR(dsn='data',layer="lfsa000a16a_e")
+can<-readOGR(dsn='data',layer="lfsa000b16a_e")
 #select only Ontario
 on<-can[can$PRNAME == "Ontario",] 
-
-#create postal code forwarding data
-covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(OUTCOME1=="RECOVERED",na.rm=TRUE),cases=n(),deaths=sum(OUTCOME1=="FATAL",na.rm=TRUE)) %>% left_join(PHU_PCFA)
-#get all postal codes covered by the pattern match of each postal code
-phu_postal_codes<-sapply(seq(1:dim(covidloc_phu)[1]),function(x) on@data$CFSAUID[which(grepl(paste0("^",covidloc_phu[x,"Reporting_PHU_PCFA"]),on@data$CFSAUID))])
-names(phu_postal_codes)<-covidloc_phu$Reporting_PHU
-#create dataframe to join postal codes with public health unit
-phu_cfsauid<-data.frame(CFSAUID=phu_postal_codes %>% unlist(use.names=FALSE),Reporting_PHU=lapply(names(phu_postal_codes),function(x) rep(x,times=length(phu_postal_codes[[x]]))) %>% unlist() )
-#join in case data
-phu_cfsauid <- phu_cfsauid %>% left_join(covidloc_phu %>% select(-Reporting_PHU_PCFA)) 
-#add remaining CFSAUID that are not assigned to a public health unit
-phu_cfsauid <- phu_cfsauid %>% bind_rows( data.frame(CFSAUID=on@data$CFSAUID[which(!on@data$CFSAUID %in% (phu_cfsauid %>% pull("CFSAUID")))]) )
-
-#add covid reporting data
-on@data<-on@data %>% left_join(phu_cfsauid)
 #fortify ontario data
 on_f<-fortify(on)
 #add covid reporting data back to on_f
 on$id<-row.names(on)
 on_f<- on_f %>% left_join(on@data)
-#add GTA variable to on_f to identify regions from <https://www.ic.gc.ca/eic/site/bsf-osb.nsf/eng/br03396.html>
+#add region by CFAUID
 on_f<- on_f %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
     ifelse(grepl("^K",CFSAUID),"Eastern Ontario",
     ifelse(grepl("^L",CFSAUID),"Central Ontario",
     ifelse(grepl("^N",CFSAUID),"Southwestern Ontario",
     ifelse(grepl("^P",CFSAUID),"Northern Ontario","Other")))))
 )
-#
 
+#map public health unit data names from shape file to names from covid data
+phu_map<-c(
+"The District of Algoma Health Unit"="Algoma Public Health Unit",
+"Brant County Health Unit"="Brant County Health Unit",
+"Durham Regional Health Unit"="Durham Region Health Department",
+"Elgin-St. Thomas Health Unit"="Southwestern Public Health",
+"Grey Bruce Health Unit"="Grey Bruce Health Unit",
+"Haldimand-Norfolk Health Unit"="Haldimand-Norfolk Health Unit",
+"Haliburton, Kawartha, Pine Ridge District Health Unit"="Haliburton, Kawartha, Pine Ridge District Health Unit",
+"Halton Regional Health Unit"="Halton Region Health Department",
+"City of Hamilton Health Unit"="Hamilton Public Health Services",
+"Hastings and Prince Edward Counties Health Unit"="Hastings and Prince Edward Counties Health Unit",
+"Huron County Health Unit"="Huron Perth District Health Unit",
+"Chatham-Kent Health Unit"="Chatham-Kent Health Unit",
+"Kingston, Frontenac, and Lennox and Addington Health Unit"="Kingston, Frontenac and Lennox & Addington Public Health",
+"Lambton Health Unit"="Lambton Public Health",
+"Leeds, Grenville and Lanark District Health Unit"="Leeds, Grenville and Lanark District Health Unit",
+"Middlesex-London Health Unit"="Middlesex-London Health Unit",
+"Niagara Regional Area Health Unit"="Niagara Region Public Health Department",
+"North Bay Parry Sound District Health Unit"="North Bay Parry Sound District Health Unit",
+"Northwestern Health Unit"="Northwestern Health Unit",
+"City of Ottawa Health Unit"="Ottawa Public Health",
+"Oxford County Health Unit"="Middlesex-London Health Unit",
+"Peel Regional Health Unit"="Peel Public Health",
+"Perth District Health Unit"="Huron Perth District Health Unit",
+"Peterborough County-City Health Unit"="Peterborough Public Health",
+"Porcupine Health Unit"="Porcupine Health Unit",
+"Renfrew County and District Health Unit"="Renfrew County and District Health Unit",
+"The Eastern Ontario Health Unit"="Eastern Ontario Health Unit",
+"Simcoe Muskoka District Health Unit"="Simcoe Muskoka District Health Unit",
+"Sudbury and District Health Unit"="Sudbury & District Health Unit",
+"Thunder Bay District Health Unit"="Thunder Bay District Health Unit",
+"Timiskaming Health Unit"="Timiskaming Health Unit",
+"Waterloo Health Unit"="Wellington-Dufferin-Guelph Public Health",
+"Wellington-Dufferin-Guelph Health Unit"="Wellington-Dufferin-Guelph Public Health",
+"Windsor-Essex County Health Unit"="Windsor-Essex County Health Unit",
+"York Regional Health Unit"="York Region Public Health Services",
+"City of Toronto Health Unit"="Toronto Public Health"
+)
+
+phu_codes<-c("Algoma Public Health"="ALG",
+"Algoma Public Health Unit"="ALG",
+"Brant County Health Unit"="BRN",
+"Chatham-Kent Public Health"="CHK",
+"Chatham-Kent Health Unit"="CHK",
+"City of Hamilton Public Health Services"="HAM",
+"Hamilton Public Health Services"="HAM",
+"Ottawa Public Health"="OTT",
+"Toronto Public Health"="TOR",
+"Durham Region Health Department"="DUR",
+"Eastern Ontario Health Unit"="EOH",
+"Grey Bruce Health Unit"="GBO",
+"Haldimand-Norfolk Health Unit"="HDN",
+"Haliburton, Kawartha, Pine Ridge District Health Unit"="HKP",
+"Halton Region Public Health"="HAL",
+"Halton Region Health Department"="HAL",
+"Hastings Prince Edward Public Health"="HPE",
+"Hastings and Prince Edward Counties Health Unit"="HPE",
+"Huron County Health Unit"="HUR",
+"Huron Perth District Health Unit"="HUR",
+"Kingston, Frontenac and Lennox & Addington Public Health"="KFL",
+"Lambton Public Health"="LAM",
+"Leeds, Grenville & Lanark District Health Unit"="LGL",
+"Leeds, Grenville and Lanark District Health Unit"="LGL",
+"Middlesex-London Health Unit"="MSL",
+"Niagara Region Public Health"="NIA",
+"Niagara Region Public Health Department"="NIA",
+"North Bay Parry Sound District Health Unit"="NPS",
+"Northwestern Health Unit"="NWR",
+"Southwestern Public Health"="OXE",
+"Peel Public Health"="PEL",
+"Perth District Health Unit"="PDH",
+"Peterborough Public Health"="PTC",
+"Porcupine Health Unit"="PQP",
+"Renfrew County and District Health Unit"="REN",
+"Simcoe Muskoka District Health Unit"="SMD",
+"Public Health Sudbury & Districts"="SUD",
+"Sudbury & District Health Unit"="SUD",
+"Thunder Bay District Health Unit"="THB",
+"Timiskaming Health Unit"="TSK",
+"Region of Waterloo Public Health and Emergency Services"="WAT",
+"Region of Waterloo, Public Health"="WAT",
+"Wellington-Dufferin-Guelph Public Health"="WDG",
+"Windsor-Essex County Health Unit"="WEC",
+"York Region Public Health"="YRK",
+"York Region Public Health Services"="YRK",
+"York Regional Health Unit"="YRK"
+)
+
+
+#read in public health office region geometry data
+on_phu<-readOGR(dsn='data',layer="lhrp035b06a_e_Oct2011")
+#fortify public health region
+on_phu_f<-fortify(on_phu)
+#add data back to on_phu_f
+on_phu$id<-row.names(on_phu)
+on_phu_f<- on_phu_f %>% left_join(on_phu@data)
+#assign public health unit names to public health unit geometries
+on_phu_f<-on_phu_f %>% mutate(Reporting_PHU=phu_map[as.character(ENG_LABEL)])
+#join covid case reporting data
+on_phu_f<- on_phu_f %>% left_join(covidloc_phu)
+#get centroid of PHU for text plotting
+on_phu.cent<-coordinates(on_phu) %>% as.data.frame()
+names(on_phu.cent)<-c("long","lat")
+on_phu.cent['Reporting_PHU'] <- on_phu@data$ENG_LABEL
+on_phu.cent['Reporting_PHU_Code'] <- phu_codes[phu_map[on_phu.cent %>% pull("Reporting_PHU") %>% as.character()]]
+#add region based on phu_codes joining of covidloc_phu
+on_phu.cent<-on_phu.cent %>% left_join(covidloc_phu %>% mutate(Reporting_PHU_Code=phu_codes[Reporting_PHU]) %>% select(Reporting_PHU_Code,Region))
+
+#using ggplot, plot boundaries of public health units
+g<-ggplot() + geom_polygon(data=on_phu_f,aes(long,lat,group=group,fill=cases)) + scale_fill_gradient2(low='white',mid='orange',high='red') + labs(fill = "Number of Cases") + geom_path(data=on_phu_f,aes(long,lat,group=group),color='blue',lwd=0.25,linetype='dashed') + geom_text(data=on_phu.cent,aes(long,lat,label=Reporting_PHU_Code)) + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) 
 #using ggplot, plot polygons of postal code forwarding sortation areas, bounded by black line-paths, fill with number of cases, separate regions identified above
-g<-ggplot(on_f,aes(long,lat,group=group,fill=cases)) + geom_polygon() + scale_fill_gradient2(low='white',mid='orange',high='red') + geom_path(color="black",lwd=0.05) + labs(fill = "Number of Cases") + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) + facet_wrap(~Region,scales="free")
-#facet_wrap(~GTA,scale="free",labeller=labeller(GTA=c("TRUE"="Toronto","FALSE"="Rest of Province")))
+g2<-geom_path(data=on_f,aes(x=long,y=lat,group=group),color="black",lwd=0.05)
 
 #generate plot, save to svg
 svg("gfx/covid_prov.svg",height=20,width=40)
-plot(g)
+plot(g + g2 + facet_wrap(~Region,scale="free"))
 dev.off()
