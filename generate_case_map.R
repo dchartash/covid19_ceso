@@ -1,6 +1,7 @@
 #packages
 require('tidyverse')
 require('rgdal')
+require('raster')
 
 #load covid data
 covidloc<-read_csv("data/conposcovidloc.csv") 
@@ -13,7 +14,6 @@ covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(O
     ifelse(grepl("^N",CFSAUID),"Southwestern Ontario",
     ifelse(grepl("^P",CFSAUID),"Northern Ontario","Other")))))
 )
-
 
 #load geographical data for postal code forward sortation area from <https://www150.statcan.gc.ca/n1/en/catalogue/92-179-X>
 can<-readOGR(dsn='data',layer="lfsa000b16a_e")
@@ -31,6 +31,29 @@ on_f<- on_f %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
     ifelse(grepl("^N",CFSAUID),"Southwestern Ontario",
     ifelse(grepl("^P",CFSAUID),"Northern Ontario","Other")))))
 )
+
+#load health facility data from the ministry of health and long term care; add region
+hspl<-read_csv("data/Ministry_of_Health_Service_Provider_Locations.csv") %>% mutate(Region=ifelse(grepl("^M",POSTAL_CODE),"Metropolitan Toronto",
+    ifelse(grepl("^K",POSTAL_CODE),"Eastern Ontario",
+    ifelse(grepl("^L",POSTAL_CODE),"Central Ontario",
+    ifelse(grepl("^N",POSTAL_CODE),"Southwestern Ontario",
+    ifelse(grepl("^P",POSTAL_CODE),"Northern Ontario","Other")))))
+)
+#filter to hospitals or labs, remove anywhere without a long/lat location 
+hspl_sel<-hspl %>% filter(grepl("^Hospital|^Laboratory",SERVICE_TYPE)) %>% filter(!is.na(X),!is.na(Y))
+#get X and Y coordinates (lat/long)
+hspl_sel_coord<-hspl_sel[c('X','Y')]
+coordinates(hspl_sel_coord)=~X+Y
+# set it to lat-long
+proj4string(hspl_sel_coord)=CRS("+init=epsg:4326") 
+# align with on
+hspl_sel_coord = spTransform(hspl_sel_coord,crs(on))
+#assign to hspl_sel, and correct column names
+hspl_sel_coord_ll<-coordinates(hspl_sel_coord)
+colnames(hspl_sel_coord_ll)<-c("long","lat")
+hspl_sel<-cbind(hspl_sel_coord_ll,hspl_sel)
+
+
 
 #map public health unit data names from shape file to names from covid data
 phu_map<-c(
@@ -139,14 +162,16 @@ names(on_phu.cent)<-c("long","lat")
 on_phu.cent['Reporting_PHU'] <- on_phu@data$ENG_LABEL
 on_phu.cent['Reporting_PHU_Code'] <- phu_codes[phu_map[on_phu.cent %>% pull("Reporting_PHU") %>% as.character()]]
 #add region based on phu_codes joining of covidloc_phu
-on_phu.cent<-on_phu.cent %>% left_join(covidloc_phu %>% mutate(Reporting_PHU_Code=phu_codes[Reporting_PHU]) %>% select(Reporting_PHU_Code,Region))
+on_phu.cent<-on_phu.cent %>% left_join(covidloc_phu %>% mutate(Reporting_PHU_Code=phu_codes[Reporting_PHU]) %>% dplyr::select(Reporting_PHU_Code,Region))
 
 #using ggplot, plot boundaries of public health units
 g<-ggplot() + geom_polygon(data=on_phu_f,aes(long,lat,group=group,fill=cases)) + scale_fill_gradient2(low='white',mid='orange',high='red') + labs(fill = "Number of Cases") + geom_path(data=on_phu_f,aes(long,lat,group=group),color='blue',lwd=0.25,linetype='dashed') + geom_text(data=on_phu.cent,aes(long,lat,label=Reporting_PHU_Code)) + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) 
 #using ggplot, plot polygons of postal code forwarding sortation areas, bounded by black line-paths, fill with number of cases, separate regions identified above
 g2<-geom_path(data=on_f,aes(x=long,y=lat,group=group),color="black",lwd=0.05)
+#plot all hospitals
+g3<-geom_point(data=hspl_sel,aes(x=long,y=lat,shape=SERVICE_TYPE),color='black',alpha=0.5) 
 
 #generate plot, save to svg
 svg("gfx/covid_prov.svg",height=20,width=40)
-plot(g + g2 + facet_wrap(~Region,scale="free"))
+plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=1, "Hospital - Corporation"=2, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0)) + facet_wrap(~Region,scale="free"))
 dev.off()
