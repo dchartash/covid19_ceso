@@ -196,6 +196,6 @@ names(covid_cases_phu) <- covidloc_phu %>% pull("Reporting_PHU")
 #set number of cases basd on covid case reports per PHU
 hspl_sel['cases']<-covid_cases_phu[ phu_map[hspl_sel %>% pull("PHU_ENG_LABEL") %>% as.character()] ]
 
-print("Run Correlation between Facility Type by PHU and Number of Cases by PHU")
+#print("Run Correlation between Facility Type by PHU and Number of Cases by PHU")
 #cor(table(hspl_sel %>% dplyr::select("cases","SERVICE_TYPE"))) %>% print()
 #ggplot(hspl_sel_melt) + geom_tile(
