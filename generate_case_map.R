@@ -2,6 +2,7 @@
 require('tidyverse')
 require('rgdal')
 require('raster')
+require('reshape2')
 
 #load covid data
 covidloc<-read_csv("data/conposcovidloc.csv") 
@@ -175,3 +176,26 @@ g3<-geom_point(data=hspl_sel,aes(x=long,y=lat,shape=SERVICE_TYPE),color='black',
 svg("gfx/covid_prov.svg",height=20,width=40)
 plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=1, "Hospital - Corporation"=2, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0)) + facet_wrap(~Region,scale="free"))
 dev.off()
+
+#======== Number of Cases and Number of Facilities by PHU ===========
+#get the spatial data frame for the coodinates of each facility, identified by OGF_ID
+hspl_sel_space<-SpatialPointsDataFrame(coords=hspl_sel %>% dplyr::select("long","lat"),data=hspl_sel %>% dplyr::select("OGF_ID"))
+#assign on_phu_polygon to each space
+on_phu_polygon.hspl_sel_space<-over(hspl_sel_space,SpatialPolygons(on_phu@polygons))
+#label each polygon based on PHU label
+on_phu_polgyon_label<-on_phu@data %>% pull("ENG_LABEL")
+names(on_phu_polgyon_label)<-on_phu@data %>% pull("GEODB_OID")
+#assign OGF_ID to polygon label
+names(on_phu_polygon.hspl_sel_space)<-hspl_sel_space@data$OGF_ID
+#assign phu label to polygon label, and add to hspl_sel dataframe
+hspl_sel['PHU_ENG_LABEL']<-on_phu_polgyon_label[on_phu_polygon.hspl_sel_space[hspl_sel %>% pull("OGF_ID") %>% as.character()]]
+
+#get covid case reports by PHU
+covid_cases_phu<-covidloc_phu %>% pull("cases")
+names(covid_cases_phu) <- covidloc_phu %>% pull("Reporting_PHU")
+#set number of cases basd on covid case reports per PHU
+hspl_sel['cases']<-covid_cases_phu[ phu_map[hspl_sel %>% pull("PHU_ENG_LABEL") %>% as.character()] ]
+
+print("Run Correlation between Facility Type by PHU and Number of Cases by PHU")
+#cor(table(hspl_sel %>% dplyr::select("cases","SERVICE_TYPE"))) %>% print()
+#ggplot(hspl_sel_melt) + geom_tile(
