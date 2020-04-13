@@ -166,7 +166,7 @@ on_phu.cent['Reporting_PHU_Code'] <- phu_codes[phu_map[on_phu.cent %>% pull("Rep
 on_phu.cent<-on_phu.cent %>% left_join(covidloc_phu %>% mutate(Reporting_PHU_Code=phu_codes[Reporting_PHU]) %>% dplyr::select(Reporting_PHU_Code,Region))
 
 #using ggplot, plot boundaries of public health units
-g<-ggplot() + geom_polygon(data=on_phu_f,aes(long,lat,group=group,fill=cases)) + scale_fill_gradient2(low='white',mid='orange',high='red') + labs(fill = "Number of Cases") + geom_path(data=on_phu_f,aes(long,lat,group=group),color='blue',lwd=0.25,linetype='dashed') + geom_text(data=on_phu.cent,aes(long,lat,label=Reporting_PHU_Code)) + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) 
+g<-ggplot() + geom_polygon(data=on_phu_f,aes(long,lat,group=group,fill=cases)) + scale_fill_gradient2(low='yellow',mid='orange',high='red') + labs(fill = "Number of Cases") + geom_path(data=on_phu_f,aes(long,lat,group=group),color='blue',lwd=0.25,linetype='dashed') + geom_text(data=on_phu.cent,aes(long,lat,label=Reporting_PHU_Code)) + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) 
 #using ggplot, plot polygons of postal code forwarding sortation areas, bounded by black line-paths, fill with number of cases, separate regions identified above
 g2<-geom_path(data=on_f,aes(x=long,y=lat,group=group),color="black",lwd=0.05)
 #plot all hospitals
