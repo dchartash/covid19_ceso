@@ -29,7 +29,7 @@ __UV Disinfection:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID
 
 __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Clinical-Care/COVID-ECRI-N95-Respirators.pdf>
 
-![ECRI Recommendations](https://assets.ecri.org/Images1/Resources/COVID19/COVID-n95-recommendations-lab-series-2-updated.JPG)
+![](https://assets.ecri.org/Images1/Resources/COVID19/COVID-n95-recommendations-lab-series-2-updated.JPG)
 
 > ECRI supports prioritizing extend use over reuse because:
 > - The reported pathogen transfer risk from N95s is high by contact (donning and doffing) but low by aerosol (spread by breathing through a used mask).
@@ -57,7 +57,7 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 ### ECRI
 Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid-19-ventilator-shortages>, selection sequence:
 
-![ECRI Recommendations](https://assets.ecri.org/Images1/Resources/COVID19/COVID-ventilator2-recommendations-lab-series-3.JPG)
+![](https://assets.ecri.org/Images1/Resources/COVID19/COVID-ventilator2-recommendations-lab-series-3.JPG)
 
 > Ventilator sharing guidance from the Society of Critical Care Medicine (SCCM), American Association for Respiratory Care (AARC), American Society of Anesthesiologists (ASA), Anesthesia Patient Safety Foundation (APSF), American Association of Critical‐Care Nurses (AACN), American College of Chest Physicians (CHEST): <https://www.aarc.org/joint-statement-guidance-document-on-multiple-patients-per-ventilator/>
 
@@ -105,18 +105,17 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 > Webinar on the topic of "Infusion Therapy - Conserving Supplies in the Age of COVID-19": <https://www.ecri.org/landing-covid-infusion-therapy>
 > Broadly, as with anesthesia drugs, there is an expected shortage predicted in the future.
 
-![ECRI Recommendations](https://assets.ecri.org/Images1/Resources/COVID19/COVID-19_Pump_Webcast_Recs_20200408.JPG)
+![](https://assets.ecri.org/Images1/Resources/COVID19/COVID-19_Pump_Webcast_Recs_20200408.JPG)
 
-Institute for Safe Medication Practices __Planning for Anticipated Shortage of Smart Infusion Pumps and Dedicated Administration Sets__: <https://ismp.org/acute-care/special-edition-medication-safety-alert-april-9-2020/covid-19>
+Institute for Safe Medication Practices __Planning for Anticipated Shortage of Smart Infusion Pumps and Dedicated Administration Sets__: <https://ismp.org/acute-care/special-edition-medication-safety-alert-april-9-2020/covid-19>. The steps suggested to manage infusion pump shortages are:
 
-> Steps suggested:
-1. Identify medications requiring smart pumps.
-2. Take inventory of all available pumps.
-3. IV to oral (or IM) conversion. Organizations should switch patients from IV to oral therapies as soon as possible.
-4. Use IV push instead of infusions.
-5. Administration set change policy. Another item that should be reviewed is the hospital’s current administration set change policy. 
-6. Potential role for gravity infusions. 
-7. Subcutaneous infusions. Subcutaneous gravity infusions may be an option for parenteral delivery of medications and solutions for some patients.
+> 1. Identify medications requiring smart pumps.
+> 2. Take inventory of all available pumps.
+> 3. IV to oral (or IM) conversion. Organizations should switch patients from IV to oral therapies as soon as possible.
+> 4. Use IV push instead of infusions.
+> 5. Administration set change policy. Another item that should be reviewed is the hospital’s current administration set change policy. 
+> 6. Potential role for gravity infusions. 
+> 7. Subcutaneous infusions. Subcutaneous gravity infusions may be an option for parenteral delivery of medications and solutions for some patients.
 
 ### American Society of Health-System Pharmacists/Canadian Society of Hospital Pharmacists
 > American drug shortages can be found here: <https://www.ashp.org/Drug-Shortages/Current-Shortages>, and there is an expected shortage predicted in Canada.
@@ -126,8 +125,8 @@ Institute for Safe Medication Practices __Planning for Anticipated Shortage of S
 * * * 
 <div id='map'>
 
-# Map
-Provincial map of covid-19 cases sourced from <https://data.ontario.ca/dataset/confirmed-positive-cases-of-covid-19-in-ontario>
+# Map of COVID-19 Case Reporting in Ontario
+Data sourced from <https://data.ontario.ca/dataset/confirmed-positive-cases-of-covid-19-in-ontario>. Public health unit jurisdictions overlaid on hospital/laboratory and postal code geographies, separated by region.
 
 <img alt="Map by postal code forward sortation area boundaries" src="./gfx/covid_prov.svg" height=400 width=800></img>
 
