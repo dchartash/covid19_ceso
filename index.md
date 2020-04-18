@@ -41,7 +41,8 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 > The University of Nebraska Medical Center has developed a protocol now being referenced by multiple sources: <https://www.nebraskamed.com/sites/default/files/documents/covid-19/n-95-decon-process.pdf>.
 > This protocol is for surface decontamination and reuse of N95 respirators building upon CDC recommendations <https://www.cdc.gov/coronavirus/2019-ncov/hcp/ppe-strategy/decontamination-reuse-respirators.html> which suggest that:
 > Disposable filtering facepiece respirators (FFRs) are not approved for routine decontamination and reuse as standard of care. However, FFR decontamination and reuse may need to be considered as a crisis capacity strategy to ensure continued availability. Based on the limited research available, ultraviolet germicidal irradiation, vaporous hydrogen peroxide, and moist heat showed the most promise as potential methods to decontaminate FFRs.
-> Contracting work by a third party (Applied Research Associates produced guidance regarding the engineering particulars of reuse: <https://www.ara.com/news/ara-research-mitigate-shortage-respiratory-protection-devices-during-public-health-emergencies>
+
+> Contracting work by a third party (Applied Research Associates) produced guidance regarding the engineering particulars of reuse: <https://www.ara.com/news/ara-research-mitigate-shortage-respiratory-protection-devices-during-public-health-emergencies>
 
 
 ### Public Health Ontario
