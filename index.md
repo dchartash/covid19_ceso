@@ -35,6 +35,15 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 > - Use of surgical masks or similar disposable covers over N95s during extended use are unlikely to result in significant adverse effects.
 > - Mechanical failure (e.g., broken straps and poor sealing between the mask and the user’s face) with only a few reuses was common across FDA-cleared (i.e., for medical use) N95s.
 
+> ECRI has developed a summary report summarizing the "Disinfection of N95 Respirators: UV Light May Be Considered For Limited Reuse Situations" [ECRI Exclusive User Experience Network] (Health Devices Alerts 2020 Apr 3. Accession No. S0394): <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_COVID-19_Alert_S0394.pdf>
+> In this summary, third party testing suggests that radiation levels from 1800 mJ/cm^2 or 120,000 mJ/cm^2 are insufficient to degrade filtration and air flow resistance for respirators past NIOSH requirements.
+> Testing was conducted on four respirator brands: 3M 1860, 3M 9210, Gerson 1730, Kimberly-Clark 46727.
+> More details can be found here: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4699414/>
+
+> ECRI suggests:
+> 1. 5 use minimum (or less if recommended by manufacturer)
+> 2. 18.4 mJ/cm^2 to 59 mJ/cm^2 at 254 nm (expecting a 3-log reduction of viral particles)
+
 ### Nebraska Medicine
 
 > The University of Nebraska Medical Center has developed a protocol now being referenced by multiple sources: <https://www.nebraskamed.com/sites/default/files/documents/covid-19/n-95-decon-process.pdf>.
@@ -48,7 +57,9 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 
 > As of 4/4/20 Public Health Ontario has synthesized literature on the topic which supports the guidance provided above: <https://www.publichealthontario.ca/-/media/documents/ncov/covid-wwksf/what-we-know-reuse-of-personal-protective-equipment.pdf?la=en>
 > There is no clear scientific consensus regarding the use or reuse of equipment and PHO defers to American sources (primarily NIOSH and CDC).
-> UV radiation is the most suggested potential form of decontamination, and the Nebraska protocol of UVGI at 60mJ/cm^2. Two 254nm UV lamps are directed towards wire hanging masks in a UV chamber for approximately 5 minutes per cycle.
+> UV radiation is the most suggested potential form of decontamination, and the Nebraska protocol of UVGI at *300 mJ/cm^2*.
+> Two 254nm UV lamps are directed towards wire hanging masks in a UV chamber for approximately 5 minutes per cycle.
+> This is a modification from the earlier 60 mJ/cm^2 suggested in reference of the Nebraska Medicine report, as the report changed its recommendations.
 
 * * *
 
@@ -67,8 +78,13 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 > - Anesthesia Units: <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_BiomedicalBenchmark_IPM_Anesthesia_Units.pdf>
 > - Anaesthesia Vaporizers: <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_BiomedicalBenchmark_IPM_Anesthesia%20Vaporizers.pdf>
 
+### Ventilator Training Alliance
+
+> A training site has been developed for ventilators which contains manuals, guides and video material for Draeger, GE, Getinge, Hamilton Medical, Medtronic, Nihon Kohden, Philips and Vyaire: <https://vta.allego.com/home.do>
+
 ## Anesthesia - Ventilator Conversion
 
+### ECRI
 > ECRI lab tour: <https://www.ecri.org/landing-covid-anesthesia-units-ventilators>
 > Recommended that clinical engineers begin by:
 
@@ -81,13 +97,18 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 
 ![](https://assets.ecri.org/Images1/Resources/COVID19/ECRI_COVID-19_webcast_anesthesia-2.JPG)
 
-
 ### American Society of Anesthesiologists and the Anesthesia Patient Safety Foundation
 
 > A landing page for guidance is provided and updated: <https://www.asahq.org/in-the-spotlight/coronavirus-covid-19-information/purposing-anesthesia-machines-for-ventilators>.
 > Within the documentation provided on the webpage it contains information for manufacturer specific settings.
 > General facts about equipment maintenance can be found here: <https://www.asahq.org/about-asa/governance-and-committees/asa-committees/committee-on-occupational-health/coronavirus/clinical-faqs>
 > This is linked to and endorsed by the Canadian Anesthesiologists' Society.
+
+> Specific guidance can be found here as of 16-Apr-2020 <https://www.asahq.org/-/media/files/spotlight/anesthesia-machines-as-icu-ventilators416.pdf> including specific machine settings and resources. Each manufacturer has provided resources to manage their machines:
+> - GE: <https://www.gehealthcare.com/products/Anesthesia-Delivery-Systems-User-Resources>
+> - Draeger: <https://www.draeger.com/en-us_us/Home/novel-coronavirus-outbreak#anesthesia>
+> - Mindray: <https://www.mindraynorthamerica.com/covid-19-response/>
+> - Getinge: <https://www.getinge.com/dam/hospital/documents/marketing-sales/customer-letters/english/mcv00103387_reva_covid-19_customer_letter_long_term_ventilation_with_flow-en-us.pdf>
 
 ### Canadian Anesthesiologists' Society
 
