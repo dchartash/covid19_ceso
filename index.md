@@ -41,6 +41,7 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 > More details can be found here: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4699414/>
 
 > ECRI suggests:
+
 > 1. 5 use minimum (or less if recommended by manufacturer)
 > 2. 18.4 mJ/cm^2 to 59 mJ/cm^2 at 254 nm (expecting a 3-log reduction of viral particles)
 
@@ -105,6 +106,7 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 > This is linked to and endorsed by the Canadian Anesthesiologists' Society.
 
 > Specific guidance can be found here as of 16-Apr-2020 <https://www.asahq.org/-/media/files/spotlight/anesthesia-machines-as-icu-ventilators416.pdf> including specific machine settings and resources. Each manufacturer has provided resources to manage their machines:
+
 > - GE: <https://www.gehealthcare.com/products/Anesthesia-Delivery-Systems-User-Resources>
 > - Draeger: <https://www.draeger.com/en-us_us/Home/novel-coronavirus-outbreak#anesthesia>
 > - Mindray: <https://www.mindraynorthamerica.com/covid-19-response/>
