@@ -1,4 +1,3 @@
-# Resources
 <div id='resources'>
 
 ## Clinical Definitions and Guidance in Ontario
