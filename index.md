@@ -123,12 +123,3 @@ Institute for Safe Medication Practices __Planning for Anticipated Shortage of S
 > The Canadian Society of Hospital Pharmacists is currently tracking the problem, and will update their COVID-19 resource page here: <https://www.cshp.ca/covid-19>.
 
 </div>
-* * * 
-<div id='map'>
-
-# Map of COVID-19 Case Reporting in Ontario
-Data sourced from <https://data.ontario.ca/dataset/confirmed-positive-cases-of-covid-19-in-ontario>. Public health unit jurisdictions overlaid on hospital/laboratory and postal code geographies, separated by region.
-
-<img alt="Map by postal code forward sortation area boundaries" src="./gfx/covid_prov.svg" height=400 width=800></img>
-
-</div>
