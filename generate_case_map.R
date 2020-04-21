@@ -8,7 +8,8 @@ require('reshape2')
 covidloc<-read_csv("data/conposcovidloc.csv") 
 
 #create postal code forwarding data
-covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(OUTCOME1=="Resolved",na.rm=TRUE),cases=n(),deaths=sum(OUTCOME1=="Fatal",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
+#OUTCOME -> Outcome
+covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(Outcome1=="Resolved",na.rm=TRUE),cases=n(),deaths=sum(Outcome1=="Fatal",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
 #covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(RESOLVED=="Yes",na.rm=TRUE),cases=n(),deaths=sum(RESOLVED=="Fatal",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
     ifelse(grepl("^K",CFSAUID),"Eastern Ontario",
     ifelse(grepl("^L",CFSAUID),"Central Ontario",
