@@ -31,6 +31,7 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 ![](https://assets.ecri.org/Images1/Resources/COVID19/COVID-n95-recommendations-lab-series-2-updated.JPG)
 
 > ECRI supports prioritizing extend use over reuse because:
+
 > - The reported pathogen transfer risk from N95s is high by contact (donning and doffing) but low by aerosol (spread by breathing through a used mask).
 > - Use of surgical masks or similar disposable covers over N95s during extended use are unlikely to result in significant adverse effects.
 > - Mechanical failure (e.g., broken straps and poor sealing between the mask and the user’s face) with only a few reuses was common across FDA-cleared (i.e., for medical use) N95s.
@@ -76,6 +77,7 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 > __The above‐named organizations advise clinicians that sharing mechanical ventilators should not be attempted because it cannot be done safely with current equipment.__ Attempting to ventilate multiple patients with COVID‐19, given the issues described here, could lead to poor outcomes and high mortality rates for all patients cohorted. It is better to purpose the ventilator to the patient most likely to benefit than fail to prevent, or even cause, the demise of multiple patients.
 
 > Benchmarks for anesthesia units and vaporizers to certify operation:
+
 > - Anesthesia Units: <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_BiomedicalBenchmark_IPM_Anesthesia_Units.pdf>
 > - Anaesthesia Vaporizers: <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_BiomedicalBenchmark_IPM_Anesthesia%20Vaporizers.pdf>
 
