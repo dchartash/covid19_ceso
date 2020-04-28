@@ -9,7 +9,7 @@
 
 * * *
 
-## N95 UV Disinfection and Reuse
+## N95 Disinfection and Reuse
 
 ### ECRI
 
@@ -46,6 +46,13 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 > 1. 5 use minimum (or less if recommended by manufacturer)
 > 2. 18.4 mJ/cm^2 to 59 mJ/cm^2 at 254 nm (expecting a 3-log reduction of viral particles)
 
+### AAMI
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BC5umtirz4I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+> AAMI hosted a webinar on the decontamination process, and concluded that best practices consist of evaluating the evidence. They also suggested beyond UV decontamination that vaporized hydrogen peroxide may be an effective solution. A National Institute of Standards and Technology tool was developed to facilitate this process: <https://www.nist.gov/services-resources/software/tool-evaluation-vaporized-hydrogen-peroxide-disinfection-n95-masks-small>
+> This spreadsheet tool estimates the vaporized hydrogen peroxide (VHP) concentration in air of rooms used for VHP mask disinfection systems. The tool employs a single-zone mass balance analysis that accounts for room size, VHP losses to surfaces and air change rate. This tool is intended to support VHP disinfection efforts by providing estimates of VHP concentrations in the room being employed, but it does not describe or provide guidance on VHP disinfection applications. 
+
 ### Nebraska Medicine
 
 > The University of Nebraska Medical Center has developed a protocol now being referenced by multiple sources: <https://www.nebraskamed.com/sites/default/files/documents/covid-19/n-95-decon-process.pdf>.
@@ -53,7 +60,6 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 > Disposable filtering facepiece respirators (FFRs) are not approved for routine decontamination and reuse as standard of care. However, FFR decontamination and reuse may need to be considered as a crisis capacity strategy to ensure continued availability. Based on the limited research available, ultraviolet germicidal irradiation, vaporous hydrogen peroxide, and moist heat showed the most promise as potential methods to decontaminate FFRs.
 
 > Contracting work by a third party (Applied Research Associates) produced guidance regarding the engineering particulars of reuse: <https://www.ara.com/news/ara-research-mitigate-shortage-respiratory-protection-devices-during-public-health-emergencies>
-
 
 ### Public Health Ontario
 
