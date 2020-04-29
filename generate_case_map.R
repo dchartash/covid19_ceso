@@ -175,7 +175,7 @@ g3<-geom_point(data=hspl_sel,aes(x=long,y=lat,shape=SERVICE_TYPE),color='black',
 
 #generate plot, save to svg
 svg("gfx/covid_prov.svg",height=20,width=40)
-plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=2, "Hospital - Corporation"=6, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0,"Retirement Home"=1,"Senior Active Living Centre"=1)) + facet_wrap(~Region,scale="free"))
+plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=2, "Hospital - Corporation"=6, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0,"Retirement Home"=1,"Senior Active Living Centre"=19)) + facet_wrap(~Region,scale="free"))
 dev.off()
 
 #======== Number of Cases and Number of Facilities by PHU ===========
