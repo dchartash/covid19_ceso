@@ -42,7 +42,7 @@ hspl<-read_csv("data/Ministry_of_Health_Service_Provider_Locations.csv") %>% mut
     ifelse(grepl("^P",POSTAL_CODE),"Northern Ontario","Other")))))
 )
 #filter to hospitals or labs, remove anywhere without a long/lat location 
-hspl_sel<-hspl %>% filter(grepl("^Hospital|^Laboratory",SERVICE_TYPE)) %>% filter(!is.na(X),!is.na(Y))
+hspl_sel<-hspl %>% filter(grepl("^Hospital|^Laboratory|^Retirement|^Senior",SERVICE_TYPE)) %>% filter(!is.na(X),!is.na(Y))
 #get X and Y coordinates (lat/long)
 hspl_sel_coord<-hspl_sel[c('X','Y')]
 coordinates(hspl_sel_coord)=~X+Y
@@ -175,7 +175,7 @@ g3<-geom_point(data=hspl_sel,aes(x=long,y=lat,shape=SERVICE_TYPE),color='black',
 
 #generate plot, save to svg
 svg("gfx/covid_prov.svg",height=20,width=40)
-plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=1, "Hospital - Corporation"=2, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0)) + facet_wrap(~Region,scale="free"))
+plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=2, "Hospital - Corporation"=6, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0,"Retirement Home"=1,"Senior Active Living Centre"=1)) + facet_wrap(~Region,scale="free"))
 dev.off()
 
 #======== Number of Cases and Number of Facilities by PHU ===========
