@@ -152,4 +152,16 @@ Institute for Safe Medication Practices __Planning for Anticipated Shortage of S
 > American drug shortages can be found here: <https://www.ashp.org/Drug-Shortages/Current-Shortages>, and there is an expected shortage predicted in Canada.
 > The Canadian Society of Hospital Pharmacists is currently tracking the problem, and will update their COVID-19 resource page here: <https://www.cshp.ca/covid-19>.
 
+* * *
+## Equipment Management
+
+ECRI and the Association for Health Care Resource & Materials Management (AHRMM) are tracking non-traditional supplies for the domestic US and other international markets.
+Most of these suppliers are linked to China, and due diligence is recommended.
+
+- Non-traditional non-US international market: <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/ECRI-Non-Traditional-Vendors-COVID.xlsx>
+- Non-traditional US market: <https://www.ahrmm.org/covid-19-resources-non-traditional-suppliers-offering-ppe-and-other-critical-supplies>
+
+As of May 1st, ECRI has also compiled a product equivalents spreadsheet for various instrument components (air clearance units, breathing circuits, disinfecting wipes, HME filters, IV solutions, and universal transfer media): <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ-Support-Products-05012020.xlsx> as well as PPE (exam gloves, disinfecting wipes, face shields, isolation gowns, IV solutions, N95 air purifying respirators, shoe covers, surgical masks, and universal transport medium): <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ_Coronavirus-PPE-05012020.xlsx>.
+These spreadsheets are measured against key performance indicators, rather than absolute equivalence.
+
 </div>
