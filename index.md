@@ -155,6 +155,7 @@ Institute for Safe Medication Practices __Planning for Anticipated Shortage of S
 * * *
 ## Equipment Management
 
+## ECRI
 ECRI and the Association for Health Care Resource & Materials Management (AHRMM) are tracking non-traditional supplies for the domestic US and other international markets.
 Most of these suppliers are linked to China, and due diligence is recommended.
 
@@ -164,5 +165,14 @@ Most of these suppliers are linked to China, and due diligence is recommended.
 As of May 1st, ECRI has also compiled a product equivalents spreadsheet for various instrument components (air clearance units, breathing circuits, disinfecting wipes, HME filters, IV solutions, and universal transfer media): <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ-Support-Products-05012020.xlsx> as well as PPE (exam gloves, disinfecting wipes, face shields, isolation gowns, IV solutions, N95 air purifying respirators, shoe covers, surgical masks, and universal transport medium): <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ_Coronavirus-PPE-05012020.xlsx>.
 These spreadsheets are measured against key performance indicators, rather than absolute equivalence.
 As of May 8th, these have been updated: <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ-Support-Products.xlsx>
+
+### US Centers for Disease Control 
+The US Centers for Disease Control held a webinar on May 7th, released on the web May 11th, discussing
+
+> "key factors to help buyers make informed procurement decisions when making a respirator purchase. The information will help to maximize the likelihood of obtaining safe and effective products that will keep workers safe."
+
+This webinar contains specific information about international sourcing to the United States, including information regarding the validation of products from Chinese distributors as well as ensuring they have passed NIOSH inspection (which should indicate an equivalency to evaluations in Ontario).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/w7tVnjrmAmc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
