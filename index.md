@@ -7,6 +7,17 @@
 
 > Occupational Health and Safety and Infection Prevention & Control guidance, and facility guidance: <http://www.health.gov.on.ca/en/pro/programs/publichealth/coronavirus/2019_guidance.aspx>
 
+## [March 18th 2020] Interim order respecting the importation and sale of medical devices for use in relation to COVID-19
+
+> Whereas the Minister of Health believes that immediate action is required to deal with a significant risk, direct or indirect, to health, safety or the environment;
+> Therefore, the Minister of Health, pursuant to subsection 30.1(1) of the Food and Drugs Act, makes the annexed Interim Order Respecting the Importation and Sale of Medical Devices for Use in Relation to COVID-19.
+> Ottawa, March 18, 2020
+> Patty Hajdu
+> Minister of Health
+
+<https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/announcements/interim-order-importation-sale-medical-devices-covid-19.html>
+
+
 * * *
 
 ## N95 Disinfection and Reuse
