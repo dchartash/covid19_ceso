@@ -17,6 +17,8 @@
 
 <https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/announcements/interim-order-importation-sale-medical-devices-covid-19.html>
 
+## IFMBE Clinical Engineering Division Critical Topic Webinars
+Partnership with the WHO produced 1-hour webinars: <https://ced.ifmbe.org/blog/who-ced-covid19-townhalls.html>
 
 * * *
 
