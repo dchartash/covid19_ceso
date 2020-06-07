@@ -74,6 +74,10 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 
 > Contracting work by a third party (Applied Research Associates) produced guidance regarding the engineering particulars of reuse: <https://www.ara.com/news/ara-research-mitigate-shortage-respiratory-protection-devices-during-public-health-emergencies>
 
+### [June 7th 2020] FDA
+
+The FDA has updated its emergency use authorization regarding ventilator decontamination, to address concern regarding "authorized respirators manufactured in China [which] may vary in their design and performance": <https://www.fda.gov/news-events/press-announcements/coronavirus-covid-19-update-fda-reissues-emergency-use-authorizations-revising-which-types>
+
 ### Public Health Ontario
 
 > As of 4/4/20 Public Health Ontario has synthesized literature on the topic which supports the guidance provided above: <https://www.publichealthontario.ca/-/media/documents/ncov/covid-wwksf/what-we-know-reuse-of-personal-protective-equipment.pdf?la=en>
