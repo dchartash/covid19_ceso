@@ -181,7 +181,7 @@ Most of these suppliers are linked to China, and due diligence is recommended.
 
 As of May 1st, ECRI has also compiled a product equivalents spreadsheet for various instrument components (air clearance units, breathing circuits, disinfecting wipes, HME filters, IV solutions, and universal transfer media): <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ-Support-Products-05012020.xlsx> as well as PPE (exam gloves, disinfecting wipes, face shields, isolation gowns, IV solutions, N95 air purifying respirators, shoe covers, surgical masks, and universal transport medium): <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ_Coronavirus-PPE-05012020.xlsx>.
 These spreadsheets are measured against key performance indicators, rather than absolute equivalence.
-As of May 8th, these have been updated: <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ-Support-Products.xlsx>
+As of June 24th, these have been updated: <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Supply-Chain/COVID-CrossCHEQ-Support-Products.xlsx>
 
 ### US Centers for Disease Control 
 The US Centers for Disease Control held a webinar on May 7th, released on the web May 11th, discussing
