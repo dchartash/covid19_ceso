@@ -9,7 +9,7 @@ covidloc<-read_csv("data/conposcovidloc.csv")
 
 #create postal code forwarding data
 #OUTCOME -> Outcome
-covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(Outcome1=="Resolved",na.rm=TRUE),cases=n(),deaths=sum(Outcome1=="Fatal",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
+covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(Outcome1=="Resolved",na.rm=TRUE),active=sum(Outcome1=="Not Resolved",na.rm=TRUE),cases=n(),deaths=sum(Outcome1=="Fatal",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
 #covidloc_phu<-covidloc %>% group_by(Reporting_PHU) %>% summarize(recovered=sum(RESOLVED=="Yes",na.rm=TRUE),cases=n(),deaths=sum(RESOLVED=="Fatal",na.rm=TRUE),CFSAUID=unique(str_extract(pattern="[A-Z0-9]{3}",Reporting_PHU_Postal_Code))) %>% mutate(Region=ifelse(grepl("^M",CFSAUID),"Metropolitan Toronto",
     ifelse(grepl("^K",CFSAUID),"Eastern Ontario",
     ifelse(grepl("^L",CFSAUID),"Central Ontario",
@@ -167,7 +167,7 @@ on_phu.cent['Reporting_PHU_Code'] <- phu_codes[phu_map[on_phu.cent %>% pull("Rep
 on_phu.cent<-on_phu.cent %>% left_join(covidloc_phu %>% mutate(Reporting_PHU_Code=phu_codes[Reporting_PHU]) %>% dplyr::select(Reporting_PHU_Code,Region))
 
 #using ggplot, plot boundaries of public health units
-g<-ggplot() + geom_polygon(data=on_phu_f,aes(long,lat,group=group,fill=cases)) + scale_fill_gradient2(low='#ffeda0',mid='#feb24c',high='#f03b20',midpoint=max(on_phu_f %>% pull("cases"))/2) + labs(fill = "Number of Cases") + geom_path(data=on_phu_f,aes(long,lat,group=group),color='blue',lwd=0.25,linetype='dashed') + geom_text(data=on_phu.cent,aes(long,lat,label=Reporting_PHU_Code)) + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) 
+g<-ggplot() + geom_polygon(data=on_phu_f,aes(long,lat,group=group,fill=active)) + scale_fill_gradient2(low='#ffeda0',mid='#feb24c',high='#f03b20',midpoint=max(on_phu_f %>% pull("active"))/2) + labs(fill = "Number of Active Cases") + geom_path(data=on_phu_f,aes(long,lat,group=group),color='blue',lwd=0.25,linetype='dashed') + geom_text(data=on_phu.cent,aes(long,lat,label=Reporting_PHU_Code)) + theme_bw() + theme(panel.border = element_blank(),axis.text=element_blank(),axis.title=element_blank(),axis.ticks=element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(),aspect.ratio=1) 
 #using ggplot, plot polygons of postal code forwarding sortation areas, bounded by black line-paths, fill with number of cases, separate regions identified above
 g2<-geom_path(data=on_f,aes(x=long,y=lat,group=group),color="black",lwd=0.05)
 #plot all hospitals
@@ -177,26 +177,3 @@ g3<-geom_point(data=hspl_sel,aes(x=long,y=lat,shape=SERVICE_TYPE),color='black',
 svg("gfx/covid_prov.svg",height=20,width=40)
 plot(g + g2 + g3 + scale_shape_manual("Healthcare Facility",values=c("Hospital - Site"=2, "Hospital - Corporation"=6, "Laboratory - Hospital"=3, "Laboratory - Specimen Collection Centre"=4, "Laboratory - Community Private"=0,"Retirement Home"=1,"Senior Active Living Centre"=19)) + facet_wrap(~Region,scale="free"))
 dev.off()
-
-#======== Number of Cases and Number of Facilities by PHU ===========
-#get the spatial data frame for the coodinates of each facility, identified by OGF_ID
-hspl_sel_space<-SpatialPointsDataFrame(coords=hspl_sel %>% dplyr::select("long","lat"),data=hspl_sel %>% dplyr::select("OGF_ID"))
-#assign on_phu_polygon to each space
-on_phu_polygon.hspl_sel_space<-over(hspl_sel_space,SpatialPolygons(on_phu@polygons))
-#label each polygon based on PHU label
-on_phu_polgyon_label<-on_phu@data %>% pull("ENG_LABEL")
-names(on_phu_polgyon_label)<-on_phu@data %>% pull("GEODB_OID")
-#assign OGF_ID to polygon label
-names(on_phu_polygon.hspl_sel_space)<-hspl_sel_space@data$OGF_ID
-#assign phu label to polygon label, and add to hspl_sel dataframe
-hspl_sel['PHU_ENG_LABEL']<-on_phu_polgyon_label[on_phu_polygon.hspl_sel_space[hspl_sel %>% pull("OGF_ID") %>% as.character()]]
-
-#get covid case reports by PHU
-covid_cases_phu<-covidloc_phu %>% pull("cases")
-names(covid_cases_phu) <- covidloc_phu %>% pull("Reporting_PHU")
-#set number of cases basd on covid case reports per PHU
-hspl_sel['cases']<-covid_cases_phu[ phu_map[hspl_sel %>% pull("PHU_ENG_LABEL") %>% as.character()] ]
-
-#print("Run Correlation between Facility Type by PHU and Number of Cases by PHU")
-#cor(table(hspl_sel %>% dplyr::select("cases","SERVICE_TYPE"))) %>% print()
-#ggplot(hspl_sel_melt) + geom_tile(
