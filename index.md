@@ -20,6 +20,14 @@
 ## IFMBE Clinical Engineering Division Critical Topic Webinars
 Partnership with the WHO produced 1-hour webinars: <https://ced.ifmbe.org/blog/who-ced-covid19-townhalls.html>
 
+## [June 27th 2020] Medical Device Respirator Recalls
+
+<https://healthycanadians.gc.ca/recall-alert-rappel-avis/hc-sc/2020/73137a-eng.php>
+
+- __Product:__ Certain respirators, including KN95 Filtering Facepiece Respirators (“respirators”).
+- __Issue:__ Not all respirators meet the minimum 95% filtration rate required.
+- __What to do:__ Do not use the masks on the list in situations where a minimum 95% filtration rate is required (such as health care settings).
+
 * * *
 
 ## N95 Disinfection and Reuse
