@@ -180,7 +180,7 @@ Institute for Safe Medication Practices __Planning for Anticipated Shortage of S
 * * *
 ## Equipment Management
 
-## ECRI
+### ECRI
 ECRI and the Association for Health Care Resource & Materials Management (AHRMM) are tracking non-traditional supplies for the domestic US and other international markets.
 Most of these suppliers are linked to China, and due diligence is recommended.
 
@@ -199,5 +199,15 @@ The US Centers for Disease Control held a webinar on May 7th, released on the we
 This webinar contains specific information about international sourcing to the United States, including information regarding the validation of products from Chinese distributors as well as ensuring they have passed NIOSH inspection (which should indicate an equivalency to evaluations in Ontario).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w7tVnjrmAmc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## 3D Printing of Medical Devices/Personal Protective Equipment
+
+### US Food and Drug Administration
+The US FDA has developed guidance for the 3D printing of medical devices and personal protective equipment: <https://www.fda.gov/medical-devices/coronavirus-covid-19-and-medical-devices/3d-printing-medical-devices-accessories-components-and-parts-during-covid-19-pandemic>.
+This guidance suggests that such equipment requires testing and evaluation by the FDA prior to use.
+
+### Health Canada
+Similarly, Health Canada has issued guidance: <https://www.canada.ca/en/health-canada/services/drugs-health-products/medical-devices/covid-19-unconventional-manufacturing-personal-protective-equipment.html>.
+This guidance provides the standards for face shields and masks, as well as regulatory authorization protocols and pathways.
 
 </div>
