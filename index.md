@@ -32,6 +32,8 @@ Partnership with the WHO produced 1-hour webinars: <https://ced.ifmbe.org/blog/w
 
 ## N95 Disinfection and Reuse
 
+Rapid systematic review: [Toomey, E., Yvonne Conway, Chris Burton, Simon Smith, Michael Smalle, Xin-Hui S. Chan, Anil Adisesh et al. "Extended use or re-use of single-use surgical masks and filtering facepiece respirators during COVID-19: A rapid systematic review." Infection Control & Hospital Epidemiology (2020): 1-25.](https://www.cambridge.org/core/journals/infection-control-and-hospital-epidemiology/article/extended-use-or-reuse-of-singleuse-surgical-masks-and-filtering-facepiece-respirators-during-covid19-a-rapid-systematic-review/A5DACFDC66C8D3001F4A2E67C6A7AEF6)
+
 ### ECRI
 
 __UV Disinfection:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Center/COVID-19-Clinical-Care/COVID-Alert-UV-Disinfection.pdf>
@@ -51,7 +53,7 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 
 ![](https://assets.ecri.org/Images1/Resources/COVID19/COVID-n95-recommendations-lab-series-2-updated.JPG)
 
-> ECRI supports prioritizing extend use over reuse because:
+> ECRI supports prioritizing extended use over reuse because:
 
 > - The reported pathogen transfer risk from N95s is high by contact (donning and doffing) but low by aerosol (spread by breathing through a used mask).
 > - Use of surgical masks or similar disposable covers over N95s during extended use are unlikely to result in significant adverse effects.
@@ -115,6 +117,8 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 ### Ventilator Training Alliance
 
 > A training site has been developed for ventilators which contains manuals, guides and video material for Draeger, GE, Getinge, Hamilton Medical, Medtronic, Nihon Kohden, Philips and Vyaire: <https://vta.allego.com/home.do>
+
+[IFMBE Clinical Engineering Division Critical Topic Webinar: Mechanical Ventilators](https://ced.ifmbe.org/covid19/guruPrograms/16-covid19/27-covid19-townhalls-ventilators.html)
 
 ## Anesthesia - Ventilator Conversion
 
