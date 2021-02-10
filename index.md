@@ -114,6 +114,13 @@ Lab tour on alternative ventilator selection <https://www.ecri.org/landing-covid
 > - Anesthesia Units: <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_BiomedicalBenchmark_IPM_Anesthesia_Units.pdf>
 > - Anaesthesia Vaporizers: <https://www.ecri.org/EmailResources/Health%20Devices/ECRI_BiomedicalBenchmark_IPM_Anesthesia%20Vaporizers.pdf>
 
+### FDA Guidance on Ventilator Splitting
+
+> Although the FDA has not received any adverse event reports related to the use of ventilator splitters authorized for emergency use during the COVID-19 pandemic, recent literature describes risks that may be associated with using certain ventilator splitters. After considering this recent literature, the FDA is informing health care providers and health care facilities that the literature indicates that certain features are associated with better performance.
+
+<https://www.fda.gov/medical-devices/letters-health-care-providers/using-ventilator-splitters-during-covid-19-pandemic-letter-health-care-providers>
+
+
 ### Ventilator Training Alliance
 
 > A training site has been developed for ventilators which contains manuals, guides and video material for Draeger, GE, Getinge, Hamilton Medical, Medtronic, Nihon Kohden, Philips and Vyaire: <https://vta.allego.com/home.do>
