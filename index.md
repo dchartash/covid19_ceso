@@ -88,6 +88,11 @@ __Safety of Extended Use:__ <https://assets.ecri.org/PDF/COVID-19-Resource-Cente
 
 The FDA has updated its emergency use authorization regarding ventilator decontamination, to address concern regarding "authorized respirators manufactured in China [which] may vary in their design and performance": <https://www.fda.gov/news-events/press-announcements/coronavirus-covid-19-update-fda-reissues-emergency-use-authorizations-revising-which-types>
 
+### [June 30th 2021] FDA
+
+Today, the U.S. Food and Drug Administration (FDA) issued an updated Letter to Health Care Personnel and Facilities: FDA No Longer Authorizes Use of Non-NIOSH-Approved or Decontaminated Disposable Respirators. The FDA is revoking the Emergency Use Authorizations (EUAs) for non-NIOSH-approved disposable respirators (revocation effective July 6, 2021) and the EUAs for decontamination and bioburden reduction systems (revocation effective June 30, 2021). As of the effective date of the revocations, these devices will no longer be authorized for use by health care personnel in health care settings. These actions are in follow-up to the May 27, 2021, letter in which the FDA recommended a transition away from non-NIOSH-approved disposable respirators as well as from reusing decontaminated or bioburden-reduced disposable respirators.
+<https://www.fda.gov/medical-devices/letters-health-care-providers/update-fda-no-longer-authorizes-use-non-niosh-approved-or-decontaminated-disposable-respirators>
+
 ### Public Health Ontario
 
 > As of 4/4/20 Public Health Ontario has synthesized literature on the topic which supports the guidance provided above: <https://www.publichealthontario.ca/-/media/documents/ncov/covid-wwksf/what-we-know-reuse-of-personal-protective-equipment.pdf?la=en>
